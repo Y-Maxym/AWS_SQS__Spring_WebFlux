@@ -1,0 +1,47 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version "$springBootVersion"
+    id 'io.spring.dependency-management' version "$springDependencyManagementVersion"
+}
+
+group = 'com.spring.maxym'
+version = '1.0.0'
+
+java {
+    sourceCompatibility = "$javaVersion"
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-r2dbc'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
+    runtimeOnly 'org.postgresql:postgresql'
+    runtimeOnly 'org.postgresql:r2dbc-postgresql'
+
+    implementation 'org.flywaydb:flyway-core'
+
+    implementation "io.awspring.cloud:spring-cloud-aws-starter:$springCloudAws"
+    implementation "io.awspring.cloud:spring-cloud-aws-sqs:$springCloudAws"
+    implementation "io.awspring.cloud:spring-cloud-aws-messaging:$springCloudAwsMessaging"
+    implementation "software.amazon.awssdk:aws-sdk-java:$awsSdkVersion"
+    implementation "software.amazon.awssdk:sqs:$awsSdkVersion"
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    implementation "org.mapstruct:mapstruct:$mapStructVersion"
+    annotationProcessor "org.mapstruct:mapstruct-processor:$mapStructVersion"
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'io.projectreactor:reactor-test'
+}

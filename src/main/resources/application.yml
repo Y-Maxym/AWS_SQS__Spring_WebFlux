@@ -1,0 +1,22 @@
+spring:
+  config:
+    import: optional:file:.env[.properties]
+
+  application:
+    name: AWS_SQS
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+
+  cloud:
+    aws:
+      credentials:
+        access-key: ${accessKey}
+        secret-key: ${secretKey}
+      region:
+        static: us-east-1
+
+sqs:
+  notifications:
+    queue:
+      name: AWS_SQS_WEBFLUX.fifo
+      region: us-east-1

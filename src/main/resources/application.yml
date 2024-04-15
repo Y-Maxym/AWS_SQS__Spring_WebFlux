@@ -2,8 +2,19 @@ spring:
   config:
     import: optional:file:.env[.properties]
 
+  r2dbc:
+    url: r2dbc:pool:postgres://localhost:5432/postgres
+    username: root
+    password: root
+
+  flyway:
+    url: jdbc:postgresql://localhost:5432/postgres
+    user: root
+    password: root
+
   application:
     name: AWS_SQS
+
   jackson:
     property-naming-strategy: SNAKE_CASE
 

@@ -17,14 +17,14 @@ import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
 public class AwsConfig {
 
     @Bean
-    public AWSCredentialsProvider awsCredentialsProvider(@Value("${spring.cloud.aws.credentials.accessKey}") String accessKey,
-                                                         @Value("${spring.cloud.aws.credentials.secretKey}") String secretKey) {
+    public AWSCredentialsProvider awsCredentialsProvider(@Value("${spring.cloud.aws.credentials.access-key}") String accessKey,
+                                                         @Value("${spring.cloud.aws.credentials.secret-key}") String secretKey) {
         return new AWSStaticCredentialsProvider(new BasicAWSCredentials(accessKey, secretKey));
     }
 
     @Bean
-    public AwsCredentialsProvider awsAsyncCredentialsProvider(@Value("${spring.cloud.aws.credentials.accessKey}") String accessKey,
-                                                              @Value("${spring.cloud.aws.credentials.secretKey}") String secretKey) {
+    public AwsCredentialsProvider awsAsyncCredentialsProvider(@Value("${spring.cloud.aws.credentials.access-key}") String accessKey,
+                                                              @Value("${spring.cloud.aws.credentials.secret-key}") String secretKey) {
         return StaticCredentialsProvider.create(AwsBasicCredentials.create(accessKey, secretKey));
     }
 

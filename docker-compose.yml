@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  awssqs:
+    image: aws_sqs:latest
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    deploy:
+      mode: replicated
+      replicas: 3
+    env_file:
+      - .env

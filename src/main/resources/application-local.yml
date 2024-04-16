@@ -3,14 +3,14 @@ spring:
     import: optional:file:.env[.properties]
 
   r2dbc:
-    url: ${R2DBC_URL}
-    username: ${R2DBC_USER}
-    password: ${R2DBC_PASSWORD}
+    url: r2dbc:pool:postgres://localhost:5432/postgres
+    username: root
+    password: root
 
   flyway:
-    url: ${DB_URL}
-    user: ${DB_USER}
-    password: ${DB_PASSWORD}
+    url: jdbc:postgresql://localhost:5432/postgres
+    user: root
+    password: root
 
   application:
     name: AWS_SQS
@@ -24,10 +24,10 @@ spring:
         access-key: ${AWS_ACCESS_KEY}
         secret-key: ${AWS_SECRET_KEY}
       region:
-        static: ${AWS_REGION}
+        static: us-east-1
 
 sqs:
   notifications:
     queue:
-      name: ${SQS_QUEUE_NAME}
-      region: ${SQS_QUEUE_REGION}
+      name:
+      region: us-east-1
